@@ -1,0 +1,46 @@
+"""config URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/3.1/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path, include
+
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenVerifyView
+)
+
+urlpatterns = [
+    path('admin/', admin.site.urls, name='admin'),
+    # users/
+    # users/me/
+    # users/confirm/
+    # users/resend_activation/
+    # users/set_password/
+    # users/reset_password/
+    # users/reset_password_confirm/
+    # users/set_username/
+    # users/reset_username/
+    # users/reset_username_confirm/
+    path('auth/', include('djoser.urls')),
+
+    # jwt/create/? [name='jwt-create']
+    # jwt/refresh/? [name='jwt-refresh']
+    # jwt/verify/? [name='jwt-verify']
+    path('auth/', include('djoser.urls.jwt')),
+
+    path('api/', include('library_system.urls'), name='library_system'),
+
+]

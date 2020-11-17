@@ -1,0 +1,65 @@
+@apiUrl=http://127.0.0.1:8000/api
+@authUrl=http://127.0.0.1:8000/auth
+
+@jsonType=content-type: application/json
+
+
+##########          Token           ##############
+
+###
+POST  {{authUrl}}/users/
+{{jsonType}}
+
+{"username": "jatai", "password": "Jatai123456", "email":""}
+
+###
+# @name token
+POST {{authUrl}}/token/
+{{jsonType}}
+
+{"username": "jatai", "password": "Jatai123456"}
+
+# @authToken={{token.response.data.access}}
+
+###
+GET {{authUrl}}/users/
+Authorization: Token {{authToken}}
+###
+GET {{authUrl}}/users/me/
+Authorization: Token {{authToken}}
+
+
+
+##########          JWT           ##############
+
+
+###
+# @name login
+POST  {{authUrl}}/token/
+{{jsonType}}
+
+{
+    "username": "admin",
+    "password": "123456"
+}
+
+###
+POST  {{authUrl}}/token/refresh/
+
+###
+@authToken={{login.response.body.access}}
+
+###
+POST  {{authUrl}}/token/logout/
+Authorization: Bearer {{authToken}}
+
+
+###
+# @name book
+GET {{apiUrl}}/book/
+Authorization: Bearer {{authToken}}
+
+###
+GET  {{apiUrl}}/book/list/
+{{jsonType}}
+Authorization: Bearer {{authToken}}
