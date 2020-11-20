@@ -7,10 +7,10 @@
 ##########          Token           ##############
 
 ###
-POST  {{authUrl}}/users/
+GET  {{{{apiUrl}}}}/me/
 {{jsonType}}
 
-{"username": "jatai", "password": "Jatai123456", "email":""}
+# {"username": "jatai", "password": "Jatai123456", "email":""}
 
 ###
 # @name token
@@ -63,3 +63,8 @@ Authorization: Bearer {{authToken}}
 GET  {{apiUrl}}/book/list/
 {{jsonType}}
 Authorization: Bearer {{authToken}}
+
+###
+GET  {{apiUrl}}/book/1/
+{{jsonType}}
+# Authorization: Bearer {{authToken}}list

@@ -15,7 +15,7 @@ class Menu(models.Model):
 class MenuSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model = Menu
-    fields = ('title', 'parentId', 'url', 'icon', 'sequence')
+    fields = ('id', 'title', 'parentId', 'url', 'icon', 'sequence')
 
 class MenuViewSet(viewsets.ModelViewSet):
     serializer_class = MenuSerializer

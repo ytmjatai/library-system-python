@@ -15,7 +15,7 @@ class Category(models.Model):
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model = Category
-    fields = ('title', 'code', 'parentId', 'url', 'sequence')
+    fields = ('id', 'title', 'code', 'parentId', 'url', 'sequence')
 class CategoryViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
     queryset = Category.objects.all().order_by('sequence')

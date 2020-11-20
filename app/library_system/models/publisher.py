@@ -12,7 +12,7 @@ class Publisher(models.Model):
 class PublisherSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model = Publisher
-    fields = ('name', 'info')
+    fields = ('id', 'name', 'info')
 class PublisherViewSet(viewsets.ModelViewSet):
     serializer_class = PublisherSerializer
     queryset = Publisher.objects.all()

@@ -2,7 +2,7 @@ from django.db import models
 from rest_framework import serializers, viewsets, permissions
 from rest_framework.response import Response
 
-from .author import Author
+from .author import Author, AuthorSerializer
 from .category import Category
 from .publisher import Publisher
 
@@ -21,14 +21,18 @@ class Book(models.Model):
   def __str__(self):
       return self.title 
 
-class BookSerializer(serializers.HyperlinkedModelSerializer):
+class BookSerializer(serializers.ModelSerializer):
+  # author: AuthorSerializer()
+
   class Meta:
     model = Book
     fields = (
-      'ISBN', 'title', 'author', 'summary',
-      'category', 'thumbnail', 'pictures',
+      'id', 'ISBN', 'title', 'author', 'publisher',
+      'summary', 'category', 'thumbnail', 'pictures',
     )
+    depth = 1
 
 class BookViewSet(viewsets.ModelViewSet):
     serializer_class = BookSerializer
     queryset = Book.objects.all()
+    # pagination_class = CustomPagination
