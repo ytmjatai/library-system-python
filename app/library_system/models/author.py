@@ -16,7 +16,7 @@ class Author(models.Model):
 class AuthorSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model = Author
-    fields = ('first_name', 'last_name', 'date_of_birth', 'date_of_death', 'info', 'motto')
+    fields = ('id', 'first_name', 'last_name', 'date_of_birth', 'date_of_death', 'info', 'motto')
 
 class AuthorViewSet(viewsets.ModelViewSet):
     serializer_class = AuthorSerializer

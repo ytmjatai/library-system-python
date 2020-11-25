@@ -68,3 +68,35 @@ Authorization: Bearer {{authToken}}
 GET  {{apiUrl}}/book/1/
 {{jsonType}}
 # Authorization: Bearer {{authToken}}list
+
+
+###
+# @name publisher
+GET {{apiUrl}}/publisher/
+# Authorization: Bearer {{authToken}}
+
+###
+GET  {{apiUrl}}/book/list/
+{{jsonType}}
+Authorization: Bearer {{authToken}}
+
+###
+GET  {{apiUrl}}/book/1/
+{{jsonType}}
+# Authorization: Bearer {{authToken}}list
+
+###
+# @name author
+GET {{apiUrl}}/publisher/
+# Authorization: Bearer {{authToken}}
+
+###
+POST   {{apiUrl}}/author/
+{{jsonType}}
+
+{"first_name": "fn", "last_name": "ls n"}
+ 
+###
+GET  {{apiUrl}}/book/1/
+{{jsonType}}
+# Authorization: Bearer {{authToken}}list
